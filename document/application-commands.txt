@@ -1,0 +1,62 @@
+> Then login jump server through application server
+     $ ssh -i key-name ec2-user@PrivateIPofapplicationserver
+     $ sudo -i
+     $ install tomcat - go to google and search tomcat 9 download 
+     $ Copy tar.gz link address 
+     $ curl -O <paste url link>
+     $ tar -xvzf <download file name> -C /opt
+     $ cd /opt
+     $ ls 
+     $ show apache-tomcat folder
+     $ cd
+     $ sudo yum install java -y
+     $ java --version
+     $ cd /opt
+     $ cd apache-tomcat
+     $ cd bin
+     $ ls
+     $ ./catlina.sh start        
+     $ cd
+
+> To connect java aplication with database you want required one connector
+     $ cd /opt/apache-tomcat/
+     $ ls 
+     $ cd lib
+     $ curl -O https://s3-us-west-2.amazonaws.com/studentapi-cit/mysql-connector.jar   
+     $ ls 		
+     $ cd 
+
+> now store your java application in webapps folder
+     $ cd /opt/apache-tomcat/
+     $ ls
+     $ cd webapps
+     $ curl -O https://s3-us-west-2.amazonaws.com/studentapi-cit/student.war  
+     $ ls 	
+     $ cd
+
+> Now configure the database
+     $ cd /opt/apache-tomcat/
+     $ cd conf
+     $ ls
+     $ vim context.xml
+     $ [i]
+     $ <Resource name="jdbc/TestDB" auth="Container" type="javax.sql.DataSource"
+    maxTotal="500" maxIdle="30" maxWaitMillis="1000"
+    username="pratik" password="pratik12345" driverClassName="com.mysql.jdbc.Driver"
+    url="jdbc:mysql://endpointofDatabase:3306/studentapp?useUnicode=yes&amp;characterEncoding=utf8"/>
+     $ [esc]
+     $ :wq
+     $ cd
+
+> Then stop & start Tomcat
+     $ cd /opt/apache-tomcat
+     $ cd bin
+     $ ./catalina.sh stop
+     $ ./catalina.sh start
+     $ exit
+
+
+
+
+
+

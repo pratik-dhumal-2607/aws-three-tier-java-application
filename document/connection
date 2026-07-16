@@ -1,0 +1,13 @@
+    Internet
+       │
+       ▼
+ Internet Gateway
+       │
+       ▼
+   Jump Server
+       │ 
+       ▼
+ Application Server
+       │ 
+       ▼
+ Database Server

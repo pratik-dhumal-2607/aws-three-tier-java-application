@@ -1,0 +1,24 @@
+> Open CLI & Copy key pair on Jump server 
+     $ scp -i key-name key-name ec2-user@PublicIPofjumpserver:/home/ec2-user
+
+> Then login Jump server in CLI
+     $ ssh -i key-name ec2-user@PublicIPofjumpserver
+     $ ls 
+     $ chmod 400 key-name
+     $ sudo yum install nginx -y
+     $ sudo systemctl start nginx.service
+     $ sudo systemctl enable nginx.service
+     $ sudo systemctl status nginx.service
+
+> Copy & paste nginx reverse proxy in server block
+     $ cd /etc/nginx/
+     $ vim nginx.conf
+     $ [i]      
+     $ location / {                                     
+       proxy_pass http://privateIPofapplicationserver:8080/student/;
+       }
+     $ [esc]
+     $ :wq
+     $ sudo systemctl restart nginx.service
+     $ sudo systemctl status nginx.service
+
