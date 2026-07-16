@@ -1,0 +1,28 @@
+> Create One VPC (3-tier-vpc) (10.0.0.0/16)
+
+> Create Subnets
+      $ public subnet (10.0.0.0/20) (allow public IP)
+      $ private application subnet (10.0.16.0/20) (No public IP)
+      $ private database subnet (10.0.32.0/20) (No public IP)
+
+> Create Internet Gateway
+     $ Attached IGW in 3-tier-vpc
+
+> Create Route Table
+     $ Route IGW (0.0.0.0/0)
+     $ Associate public subnet
+
+> Create NAT Gateway in public subnet (Allocate Elastic IP)
+
+> Create Route Table
+     $ Route NAT Gateway
+     $ Associate (private application subnet & private database subnet)
+
+> Launch ec2 instances
+     $ Jump server (public subnet)
+     $ Application server (private application subnet)
+     $ Database server (private database subnet)
+
+> Create RDS DB instance 
+     $ MariaDB database  (private database subnet)
+    
