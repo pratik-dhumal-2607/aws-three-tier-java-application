@@ -1,9 +1,9 @@
-# 🚀 AWS 3-Tier Web Application Deployment
+# 🚀 AWS Three Tier JAVA Web Application Deployment
 
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazonaws)
 ![EC2](https://img.shields.io/badge/Amazon-EC2-red)
 ![RDS](https://img.shields.io/badge/Amazon-RDS-blue)
-![VPC](https://img.shields.io/badge/AWS-VPC-success)
+![VPC](https://img.shields.io/badge/Amazon-VPC-success)
 ![Nginx](https://img.shields.io/badge/Nginx-Reverse%20Proxy-green?logo=nginx)
 ![Tomcat](https://img.shields.io/badge/Apache-Tomcat-yellow?logo=apachetomcat)
 ![Java](https://img.shields.io/badge/Java-Application-orange?logo=openjdk)
@@ -14,15 +14,15 @@
 
 ## 📌 Project Overview
 
-This project demonstrates the deployment of a **production-style 3-Tier Java Web Application** on **Amazon Web Services (AWS)** following cloud networking and security best practices.
+This project demonstrates the deployment of a **production-ready Three Tier Java Web Application** on **Amazon Web Services (AWS)** by following cloud networking, security, and infrastructure best practices .
 
-The application is deployed using a custom AWS Virtual Private Cloud (VPC) with isolated networking. The infrastructure is divided into three independent layers:
+The application is deployed using a custom **AWS Virtual Private Cloud (VPC)** with isolated networking . The infrastructure is divided into three independent layers :
 
-- **Presentation Layer** – Nginx Reverse Proxy running on a Jump Server in public subnet
-- **Application Layer** – Apache Tomcat hosting the Java web application in private subnet
-- **Database Layer** – Amazon RDS (MariaDB) deployed in a private subnet
+- **Presentation Layer** – Nginx Reverse Proxy running on a Jump Server located in a Public Subnet . Handles incoming client requests and securely forwards them to the application server.
+- **Application Layer** – Apache Tomcat hosting the Java Web Application on Application Server inside a Private Application Subnet . Processes business logic while remaining inaccessible from the public internet.
+- **Database Layer** – Amazon RDS (MariaDB) deployed on Database Server in a Private Database Subnet . Stores application data securely with no direct public access .
 
-The architecture ensures that only the Jump Server is publicly accessible while the Application Server and Database remain protected inside private subnets.
+The architecture ensures that only the Jump Server is publicly accessible while the Application Server and Database Server  remain protected inside private subnets .
 
 ---
 
@@ -102,8 +102,8 @@ The architecture ensures that only the Jump Server is publicly accessible while 
 | Amazon VPC | Isolated cloud network |
 | EC2 | Compute instances |
 | Public Subnet | Hosts Jump Server |
-| Private Application Subnet | Hosts Tomcat Server |
-| Private Database Subnet | Hosts Amazon RDS |
+| Private Application Subnet | Hosts Application Server |
+| Private Database Subnet | Hosts Database server |
 | Internet Gateway | Public Internet connectivity |
 | NAT Gateway | Internet access for private resources |
 | Elastic IP | Static IP for NAT Gateway |
@@ -141,9 +141,9 @@ A custom VPC was created to isolate all cloud resources and provide complete con
 |----------|---------------|
 | VPC | Custom |
 | Availability Zones | Multiple |
-| Public Subnets | 1 |
-| Private Application Subnets | 1 |
-| Private Database Subnets | 1 |
+| Public Subnet | 1 |
+| Private Application Subnet | 1 |
+| Private Database Subnet | 1 |
 
 ---
 
@@ -164,7 +164,7 @@ The Jump Server is the only publicly accessible EC2 instance.
 
 ### Application Server
 
-The Application Server resides in a private subnet.
+The Application Server insides in a private application subnet.
 
 **Responsibilities**
 
@@ -177,7 +177,7 @@ The Application Server resides in a private subnet.
 
 ### Database Server
 
-The Database server is in a private subnet.
+The Database server is in a private database subnet.
 
 **Responsibilities**
 
@@ -199,14 +199,14 @@ Security was implemented using AWS networking best practices.
 
 ### Application Server
 
-- Private Subnet
+- Private application  Subnet
 - No Public IP
 - SSH allowed only from Jump Server
 - Tomcat Port (8080) accessible only from Jump Server
 
 ### Database Server
 
-- Private Subnet
+- Private database Subnet
 - No Public IP
 - MariaDB Port (3306) accessible only from the Application Server
 
@@ -236,7 +236,7 @@ Security was implemented using AWS networking best practices.
 
 | Protocol | Port | Source |
 |----------|------|--------|
-| MySQL | 3306 | Application Server Security Group |
+| MariaDB | 3306 | Application Server Security Group |
 
 ---
 
