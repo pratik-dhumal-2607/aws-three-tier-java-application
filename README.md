@@ -1,4 +1,4 @@
-# 🚀 AWS Three Tier JAVA Web Application Deployment
+## AWS Three Tier JAVA Web Application Deployment
 
 ![AWS](https://img.shields.io/badge/AWS-Cloud-orange?logo=amazonaws)
 ![EC2](https://img.shields.io/badge/Amazon-EC2-red)
@@ -12,7 +12,7 @@
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 This project demonstrates the deployment of a **production-ready Three Tier Java Web Application** on **Amazon Web Services (AWS)** by following cloud networking, security, and infrastructure best practices .
 
@@ -26,7 +26,7 @@ The architecture ensures that only the Jump Server is publicly accessible while 
 
 ---
 
-## 🎯 Project Objectives
+## Project Objectives
 
 - Design a secure AWS network using a custom VPC.
 - Implement public and private subnet architecture.
@@ -39,48 +39,14 @@ The architecture ensures that only the Jump Server is publicly accessible while 
 
 ---
 
-# 🏗️ Architecture
+## Architecture
 
-```
-                         Internet
-                            │
-                            ▼
-                   Internet Gateway (IGW)
-                            │
-                            ▼
-             Public Route Table (0.0.0.0/0 → IGW)
-                            │
-                            ▼
-    ┌──────────────────────────────────────────────────────┐
-    │                   Public Subnet                      │
-    │                                                      │
-    │               EC2 Jump Server                        │
-    │                  - Amazon Linux                      │
-    │                  - Nginx Reverse Proxy               │
-    │                  - SSH (22) / HTTP (80)              │
-    │               NAT Gateway                            │
-    └───────────────────────┬──────────────────────────────┘
-                            │
-                            │
-                            ▼
-          Private Route Table (0.0.0.0/0 → NAT Gateway)
-                            │
-              ┌─────────────┴─────────────┐
-              │                           │
-              ▼                           ▼
-   ┌────────────────────────┐   ┌────────────────────────┐
-   │   Private App Subnet   │   │   Private DB Subnet    │
-   │                        │   │                        │
-   │ EC2 Application Server │   │ EC2 Database Server    │
-   │   - Apache Tomcat      │◄─►│   - MariaDB (3306)     │
-   │   - Java Student App   │   │    - Student Database  │
-   │   - Tomcat (8080)      │   │                        │
-   └────────────────────────┘   └────────────────────────┘
-```
+ ![Architecture diagram](architecture.png) 
+
 
 ---
 
-# 🌐 Technology Stack
+## Technology Stack
 
 | Category | Technology |
 |----------|------------|
@@ -98,7 +64,7 @@ The architecture ensures that only the Jump Server is publicly accessible while 
 
 ---
 
-# ☁️ AWS Services Used
+## AWS Services Used
 
 | AWS Service | Purpose |
 |-------------|---------|
@@ -116,7 +82,7 @@ The architecture ensures that only the Jump Server is publicly accessible while 
 
 ---
 
-# ✨ Key Features
+## Key Features
 
 - Custom AWS VPC
 - Multi-tier architecture
@@ -134,9 +100,9 @@ The architecture ensures that only the Jump Server is publicly accessible while 
 ---
 
 
-# 🏛️ Infrastructure Components
+## Infrastructure Components
 
-## 🌐 Virtual Private Cloud (VPC)
+## Virtual Private Cloud (VPC)
 
 A custom VPC was created to isolate all cloud resources and provide complete control over networking.
 
@@ -150,7 +116,7 @@ A custom VPC was created to isolate all cloud resources and provide complete con
 
 ---
 
-## 🖥️ EC2 Instances
+## EC2 Instances
 
 ### Jump Server
 
@@ -190,7 +156,7 @@ The Database server is in a private database subnet.
 
 ---
 
-# 🔐 Security Architecture
+## Security Architecture
 
 Security was implemented using AWS networking best practices.
 
@@ -215,7 +181,7 @@ Security was implemented using AWS networking best practices.
 
 ---
 
-# 🛡️ Security Group Rules
+## Security Group Rules
 
 ## Jump Server
 
@@ -243,7 +209,7 @@ Security was implemented using AWS networking best practices.
 
 ---
 
-# 🔄 Application Request Flow
+## Application Request Flow
 
 When a user accesses the application, the request follows this path:
 
@@ -271,7 +237,7 @@ Response returned to the User
 
 ---
 
-# 🚀 Deployment Workflow
+## Deployment Workflow
 
 1. Create a Custom VPC.
 2. Create Public and Private Subnets.
@@ -291,7 +257,7 @@ Response returned to the User
 
 ---
 
-# 📊 Skills Demonstrated
+## Skills Demonstrated
 
 ## AWS
 
@@ -335,7 +301,7 @@ Response returned to the User
 
 ---
 
-# 🎯 Learning Outcomes
+## Learning Outcomes
 
 Through this project, I gained practical experience in:
 
@@ -351,7 +317,7 @@ Through this project, I gained practical experience in:
 
 ---
 
-# 🔮 Future Improvements
+## Future Improvements
 
 This project can be enhanced by implementing:
 
