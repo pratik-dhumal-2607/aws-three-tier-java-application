@@ -41,8 +41,7 @@ The architecture ensures that only the Jump Server is publicly accessible while 
 
 ## Architecture
 
- ![Architecture diagram](architecture.png) 
-
+![Architecture](architecture.png)
 
 ---
 
