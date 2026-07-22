@@ -14,15 +14,13 @@
 
 ## Project Overview
 
-This project demonstrates the deployment of a **production-ready Three Tier Java Web Application** on **Amazon Web Services (AWS)** by following cloud networking, security, and infrastructure best practices .
+This project demonstrates the deployment of a **production-ready Three Tier Java Web Application** on **Amazon Web Services (AWS)** .
 
 The application is deployed using a custom **AWS Virtual Private Cloud (VPC)** with isolated networking . The infrastructure is divided into three independent layers :
 
 - **Presentation Layer** – Nginx Reverse Proxy running on a Jump Server located in a Public Subnet . Handles incoming client requests and securely forwards them to the application server.
 - **Application Layer** – Apache Tomcat hosting the Java Web Application on Application Server inside a Private Application Subnet . Processes business logic while remaining inaccessible from the public internet.
 - **Database Layer** – Amazon RDS (MariaDB) deployed on Database Server in a Private Database Subnet . Stores application data securely with no direct public access .
-
-The architecture ensures that only the Jump Server is publicly accessible while the Application Server and Database Server  remain protected inside private subnets .
 
 ---
 
@@ -45,7 +43,7 @@ The architecture ensures that only the Jump Server is publicly accessible while 
 
 ---
 
-## Technology Stack
+## Technology
 
 | Category | Technology |
 |----------|------------|
@@ -86,7 +84,7 @@ The architecture ensures that only the Jump Server is publicly accessible while 
 - Custom AWS VPC
 - Multi-tier architecture
 - Public and Private Subnets
-- Bastion Host for secure administration
+- Jump Server for secure administration
 - Reverse Proxy using Nginx
 - Apache Tomcat application deployment
 - Amazon RDS (MariaDB)
@@ -95,144 +93,6 @@ The architecture ensures that only the Jump Server is publicly accessible while 
 - Internet Gateway and NAT Gateway
 - JDBC database connectivity
 - Production-inspired infrastructure design
-
----
-
-
-## Infrastructure Components
-
-## Virtual Private Cloud (VPC)
-
-A custom VPC was created to isolate all cloud resources and provide complete control over networking.
-
-| Resource | Configuration |
-|----------|---------------|
-| VPC | Custom |
-| Availability Zones | Multiple |
-| Public Subnet | 1 |
-| Private Application Subnet | 1 |
-| Private Database Subnet | 1 |
-
----
-
-## EC2 Instances
-
-### Jump Server
-
-The Jump Server is the only publicly accessible EC2 instance.
-
-**Responsibilities**
-
-- Secure SSH access to private instances
-- Runs Nginx Reverse Proxy
-- Receives incoming HTTP requests
-- Forwards traffic to Apache Tomcat
-
----
-
-### Application Server
-
-The Application Server insides in a private application subnet.
-
-**Responsibilities**
-
-- Runs Apache Tomcat
-- Hosts the Java Student Application
-- Connects securely to Amazon RDS
-- Accessible only through the Jump Server
-
----
-
-### Database Server
-
-The Database server is in a private database subnet.
-
-**Responsibilities**
-
-- Stores student records
-- Accessible only from the Application Server
-- No public internet access
-
----
-
-## Security Architecture
-
-Security was implemented using AWS networking best practices.
-
-### Jump Server
-
-- Publicly Accessible
-- SSH (Port 22)
-- HTTP (Port 80)
-
-### Application Server
-
-- Private application  Subnet
-- No Public IP
-- SSH allowed only from Jump Server
-- Tomcat Port (8080) accessible only from Jump Server
-
-### Database Server
-
-- Private database Subnet
-- No Public IP
-- MariaDB Port (3306) accessible only from the Application Server
-
----
-
-## Security Group Rules
-
-## Jump Server
-
-| Protocol | Port | Source |
-|----------|------|--------|
-| SSH | 22 | My IP |
-| HTTP | 80 | Anywhere (0.0.0.0/0) |
-
----
-
-## Application Server
-
-| Protocol | Port | Source |
-|----------|------|--------|
-| SSH | 22 | Jump Server Security Group |
-| TCP | 8080 | Jump Server Security Group |
-
----
-
-## Database Server
-
-| Protocol | Port | Source |
-|----------|------|--------|
-| MariaDB | 3306 | Application Server Security Group |
-
----
-
-## Application Request Flow
-
-When a user accesses the application, the request follows this path:
-
-```text
-User Browser
-      │
-      ▼
-Public IP of Jump Server
-      │
-      ▼
-Nginx Reverse Proxy
-      │
-      ▼
-Apache Tomcat
-      │
-      ▼
-Java Web Application
-      │
-      ▼
-Database (MariaDB)
-      │
-      ▼
-Response returned to the User
-```
 
 ---
 
@@ -253,50 +113,6 @@ Response returned to the User
 13. Configure JDBC connectivity with Amazon RDS.
 14. Install and configure Nginx on the Jump Server.
 15. Verify the application using the Jump Server's public IP.
-
----
-
-## Skills Demonstrated
-
-## AWS
-
-- Amazon EC2
-- Amazon VPC
-- Internet Gateway
-- NAT Gateway
-- Route Tables
-- Public & Private Subnets
-- Amazon RDS
-- Security Groups
-
----
-
-## Linux
-
-- User Management
-- File Permissions
-- Package Management
-- System Services
-- SSH
-- Process Management
-
----
-
-## Web Technologies
-
-- Apache Tomcat
-- Nginx Reverse Proxy
-- Java Web Applications
-- JDBC Configuration
-
----
-
-## Networking
-
-- Private Networking
-- Jump Server
-- Reverse Proxy
-- Secure Database Connectivity
 
 ---
 
